@@ -10,7 +10,6 @@ const PokemonDetails = () => {
   const [pokemonDetails, setPokemonDetails] = useState([])
   const { types } = pokemonDetails;
   const { sprites } = pokemonDetails
-  // console.log(sprites.other.dream_world.front_default);
   
   useEffect(() => {
     const fetchPokemonDetail = () => {
@@ -24,7 +23,7 @@ const PokemonDetails = () => {
   return (
     <section className="flex flex-col w-full">
         <div className="flex flex-col  w-full items-center">
-        {pokemonDetails === undefined || pokemonDetails.length === 0 ? <Loading /> : <PokemonDetailsCard name={pokemonDetails.name} types={types} img={sprites.other.home.front_default}/> }
+        {pokemonDetails === undefined || pokemonDetails.length === 0 ? <Loading /> : <PokemonDetailsCard name={pokemonDetails.name} types={types} img={sprites.front_default}/> }
         </div>
     </section>
   )
