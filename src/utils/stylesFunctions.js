@@ -462,3 +462,7 @@ export const dynamicBackgroundVectorPng = (types) => {
     return stylesSteel.steelVector
   };
 }
+
+export const dynamicGradient = (types) =>{
+  
+}
