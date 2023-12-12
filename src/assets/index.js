@@ -56,7 +56,9 @@ import toggledReg from './toggledReg.svg';
 import toggledFav from './toggledFav.svg';
 import toggledAcc from './toggledAcc.svg';
 import Group from './Group.svg';
-import Vectorwaterpng from './Vectorwaterpng.png'
+import Vectorwaterpng from './Vectorwaterpng.png';
+import semiArrowWhite from './semiArrowWhite.svg';
+import favWhite from './favWhite.svg';
 
 
 export  {
@@ -119,4 +121,6 @@ export  {
     toggledFav,
     Group,
     Vectorwaterpng,
+    semiArrowWhite,
+    favWhite,
 };

@@ -7,9 +7,11 @@ import Loading from "../components/Loading";
 
 const PokemonDetails = () => {
   const endpoint = localStorage.getItem('endpoint');
-  const [pokemonDetails, setPokemonDetails] = useState([])
-  const { types } = pokemonDetails;
-  const { sprites } = pokemonDetails
+  const species = localStorage.getItem('species');
+  const [pokemonDetails, setPokemonDetails] = useState([]);
+  const [pokemonSpecie, setPokemonSpecie] = useState([]);
+  const { types, sprites, id, name} = pokemonDetails;
+  const {flavor_text_entries} = pokemonSpecie;
   
   useEffect(() => {
     const fetchPokemonDetail = () => {
@@ -17,13 +19,18 @@ const PokemonDetails = () => {
         .then((response) => response.json())
         .then((data) => setPokemonDetails(data));
     };
-
+    const fetchPokemonSpecie = () =>{
+      fetch(species)
+      .then((response) => response.json())
+      .then((data) => setPokemonSpecie(data))
+    }
     fetchPokemonDetail();
+    fetchPokemonSpecie();
   }, [])
   return (
     <section className="flex flex-col w-full">
         <div className="flex flex-col  w-full items-center">
-        {pokemonDetails === undefined || pokemonDetails.length === 0 ? <Loading /> : <PokemonDetailsCard name={pokemonDetails.name} types={types} img={sprites.front_default}/> }
+        {pokemonDetails.length === 0 || pokemonSpecie.length === 0 ? <Loading /> : <PokemonDetailsCard name={name} types={types} img={sprites.front_default} number={id} description={flavor_text_entries}/> }
         </div>
     </section>
   )
