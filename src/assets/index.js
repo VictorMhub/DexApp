@@ -59,6 +59,10 @@ import Group from './Group.svg';
 import Vectorwaterpng from './Vectorwaterpng.png';
 import semiArrowWhite from './semiArrowWhite.svg';
 import favWhite from './favWhite.svg';
+import habilityIcon from './habilityIcon.svg';
+import heightIcon from './heightIcon.svg';
+import categoryIcon from './categoryIcon.svg';
+import weightIcon from './weightIcon.svg';
 
 
 export  {
@@ -123,4 +127,8 @@ export  {
     Vectorwaterpng,
     semiArrowWhite,
     favWhite,
+    categoryIcon,
+    habilityIcon,
+    heightIcon,
+    weightIcon,
 };

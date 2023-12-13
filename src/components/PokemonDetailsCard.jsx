@@ -1,6 +1,6 @@
 import React from "react";
 import { dynamicBackground, dynamicBackgroundVector, dynamicBackgroundType, dynamicTypeIcon } from "../utils/stylesFunctions";
-import {  semiArrowWhite, favWhite } from '../assets';
+import {  semiArrowWhite, favWhite, weightIcon, heightIcon, habilityIcon,categoryIcon } from '../assets';
 import { Link } from "react-router-dom";
 
 const PokemonDetailsCard = ({
@@ -8,16 +8,16 @@ const PokemonDetailsCard = ({
   types,
   name,
   description,
-  wheight,
+  weight,
   height,
   category,
-  hability,
+  ability,
   gender,
   weekness,
   evolutions,
   number,
 }) => {
-  console.log(description[0].flavor_text);
+  console.log();
   return (
     <>
     <section
@@ -64,14 +64,48 @@ const PokemonDetailsCard = ({
     <p className="font-poppins font-normal text-[16px] text-gray-800 mt-[16px] leading-[20.3px]">
       {description[1].flavor_text}
     </p>
-    <div className="w-[388px] flex flex-row place-content-between items-cente items-cente">
-        <div className="flex flex-col">
-            <p>PESO</p>
-        </div>
-        <div className="flex flex-col">
-            <p>ALTURA</p>
-        </div>
-    </div>
+    <section className="flex flex-col w-full items-center mt-[15px]">
+      <div className="w-full flex flex-row  items-center">
+          <div className="w-[154px] h-[63px] flex flex-col mr-[25px]">
+              <div className="flex flex-row">
+                <img className="w-[18px] h-[18px] mr-[6px] mt-[3px]" src={weightIcon} alt="weight-icon" />
+                <p className="font-medium font-poppins text-[15px] text-gray-600">WEIGHT</p>
+              </div>
+              <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
+                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{weight} kg</p>
+              </div>
+          </div>
+          <div className="w-[154px] h-[63px] flex flex-col">
+              <div className="flex flex-row">
+                <img className="w-[16px] h-[16px] mr-[6px] mt-[3px]" src={heightIcon} alt="height-icon" />
+                <p className="font-medium font-poppins text-[15px] text-gray-600">HEIGHT</p>
+              </div>
+              <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
+                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{height} m</p>
+              </div>
+          </div>
+      </div>
+      <div className="w-full flex flex-row  items-center">
+          <div className="w-[154px] h-[63px] flex flex-col mr-[25px]">
+              <div className="flex flex-row">
+                <img className="w-[16px] h-[16px] mr-[6px] mt-[3px]" src={habilityIcon} alt="egggroup-icon" />
+                <p className="font-medium font-poppins text-[15px] text-gray-600">EGG GROUP</p>
+              </div>
+              <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
+                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{category[0].name[0].toUpperCase() + category[0].name.substr(1)}</p>
+              </div>
+          </div>
+          <div className="w-[154px] h-[63px] flex flex-col">
+              <div className="flex flex-row">
+                <img className="w-[16px] h-[16px] mr-[6px] mt-[3px]" src={habilityIcon} alt="ability-icon" />
+                <p className="font-medium font-poppins text-[15px] text-gray-600">ABILITY</p>
+              </div>
+              <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
+                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{ability[0].ability.name[0].toUpperCase() + ability[0].ability.name.substr(1)}</p>
+              </div>
+          </div>
+      </div>
+    </section>
   </section>
   </>
   );
