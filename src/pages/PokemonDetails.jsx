@@ -12,9 +12,8 @@ const PokemonDetails = () => {
   const [pokemonSpecie, setPokemonSpecie] = useState([]);
   const { types, sprites, id, name, weight
 , height, abilities  } = pokemonDetails;
-  const {flavor_text_entries, egg_groups} = pokemonSpecie;
-  console.log(pokemonSpecie);
-  
+  const {flavor_text_entries, egg_groups, genera} = pokemonSpecie;
+  console.log(genera);
   useEffect(() => {
     const fetchPokemonDetail = () => {
       fetch(endpoint)
@@ -32,7 +31,7 @@ const PokemonDetails = () => {
   return (
     <section className="flex flex-col w-full">
         <div className="flex flex-col  w-full items-center">
-        {pokemonDetails.length === 0 || pokemonSpecie.length === 0 ? <Loading /> : <PokemonDetailsCard name={name} types={types} img={sprites.front_default} number={id} description={flavor_text_entries} ability={abilities} height={height} weight={weight} category={egg_groups}/> }
+        {pokemonDetails.length === 0 || pokemonSpecie.length === 0 ? <Loading /> : <PokemonDetailsCard name={name} types={types} img={sprites.front_default} number={id} description={flavor_text_entries} ability={abilities} height={height} weight={weight} category={genera}/> }
         </div>
     </section>
   )
