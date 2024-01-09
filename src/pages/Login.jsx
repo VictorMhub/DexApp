@@ -9,6 +9,7 @@ const Login = () => {
   const [error, setError] = useState(false);
   const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+/i;
   const user = JSON.parse(localStorage.getItem("user"))
+  console.log(user.email);
 
 
   const handleButton = () => {
@@ -29,7 +30,7 @@ const Login = () => {
         <Link to="/">
           <img className="w-[38px]" src={semiArrow} alt="semi-arrow" />
         </Link>
-        <div className="w-full justify-center">
+        <div className="w-full justify-center"  onClick={() => handleButton()}>
           <p className="text-center font-poppins font-semibold text-[20px] pr-[29px]">
             Entrar
           </p>
