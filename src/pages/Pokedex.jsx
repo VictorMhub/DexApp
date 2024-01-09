@@ -16,6 +16,7 @@ const Pokedex = () => {
     setToggleFav,
     setToggleAcc,
     handlePokemonDetail,
+    handlePokemonSpecies,
   } = useContext(GlobalContext)
 
   useEffect(() => {
@@ -94,7 +95,10 @@ const Pokedex = () => {
       
       <div className="flex flex-col items-center overflow-hidden">
       {pokemons.lenght === 0 ? <Loading /> : pokemons.map((pokemon) => (
-        <Link to={`/pokemon/${pokemon.id}/${pokemon.name}`} onClick={() => handlePokemonDetail(pokemon.id)} key={pokemon.id}>
+        <Link to={`/pokemon/${pokemon.id}/${pokemon.name}`} onClick={() => {
+          handlePokemonDetail(pokemon.id)
+          handlePokemonSpecies(pokemon.id)
+          }} key={pokemon.id}>
         <PokemonCard 
         number={pokemon.id} 
         name={pokemon.name[0].toUpperCase() + pokemon.name.substr(1)}
