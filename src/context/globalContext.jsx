@@ -56,6 +56,11 @@ export const GlobalProvider = ({ children }) => {
     const SPECIESENDPOINT = `https://pokeapi.co/api/v2/pokemon-species/${id}`
     localStorage.setItem('species', SPECIESENDPOINT);
   }
+
+  const handlePokemonWeaknesses = async (type) => {
+    const ENDPOINT = `https://pokeapi.co/api/v2/type/${type}`;
+    localStorage.setItem = ('species', ENDPOINT)
+  }
   return (
     <GlobalContext.Provider
       value={{
@@ -80,6 +85,7 @@ export const GlobalProvider = ({ children }) => {
         setEndPoint,
         handlePokemonDetail,
         handlePokemonSpecies,
+        handlePokemonWeaknesses,
       }}
     >
       {children}

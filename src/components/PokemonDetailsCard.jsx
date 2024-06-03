@@ -1,7 +1,8 @@
 import React from "react";
-import { dynamicBackground, dynamicBackgroundVector, dynamicBackgroundType, dynamicTypeIcon } from "../utils/stylesFunctions";
+import { dynamicBackground, dynamicBackgroundVector, dynamicBackgroundType, dynamicTypeIcon,dynamicBackgroundTypeForWeaknesses, dynamicTypeIconForWeaknesses } from "../utils/stylesFunctions";
 import {  semiArrowWhite, favWhite, weightIcon, heightIcon, habilityIcon,categoryIcon } from '../assets';
 import { Link } from "react-router-dom";
+import BarraPorcentagem from '../components/GenderBar'
 
 const PokemonDetailsCard = ({
   img,
@@ -13,11 +14,11 @@ const PokemonDetailsCard = ({
   category,
   ability,
   gender,
-  weekness,
+  weaknesses,
   evolutions,
   number,
 }) => {
-
+  console.log(types);
   return (
     <>
     <section
@@ -55,7 +56,7 @@ const PokemonDetailsCard = ({
               <div className="w-[20.20px] h-[20.20px] bg-white rounded-full flex justify-center items-center mr-[1px]">
                 <img src={dynamicTypeIcon(pokemonType)} alt="" className="w-[15px] h-[15px] rounded-full bg-white"/>
               </div>            
-              <p className="font-poppins font-medium text-[18px]">
+              <p className="font-poppins font-medium text-[15px]">
                 {pokemonType.type.name[0].toUpperCase() + pokemonType.type.name.substr(1)}
               </p>
             </div>
@@ -72,7 +73,7 @@ const PokemonDetailsCard = ({
                 <p className="font-medium font-poppins text-[15px] text-gray-600">WEIGHT</p>
               </div>
               <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
-                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{weight} kg</p>
+                <p className="text-center font-poppins font-medium leading-[27px] text-[15] text-neutral-950">{weight} kg</p>
               </div>
           </div>
           <div className="w-[154px] h-[63px] flex flex-col">
@@ -81,7 +82,7 @@ const PokemonDetailsCard = ({
                 <p className="font-medium font-poppins text-[15px] text-gray-600">HEIGHT</p>
               </div>
               <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
-                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{height} m</p>
+                <p className="text-center font-poppins font-medium leading-[27px] text-[15] text-neutral-950">{height} m</p>
               </div>
           </div>
       </div>
@@ -92,7 +93,7 @@ const PokemonDetailsCard = ({
                 <p className="font-medium font-poppins text-[15px] text-gray-600">CATEGORIE</p>
               </div>
               <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
-                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{category[7].genus}</p>
+                <p className="text-center font-poppins font-medium leading-[27px] text-[15] text-neutral-950">{category[7].genus}</p>
               </div>
           </div>
           <div className="w-[154px] h-[63px] flex flex-col">
@@ -101,10 +102,32 @@ const PokemonDetailsCard = ({
                 <p className="font-medium font-poppins text-[15px] text-gray-600">ABILITY</p>
               </div>
               <div className="h-[43px] border-2 border-gray-300 rounded-[15px] flex items-center justify-center">
-                <p className="text-center font-poppins font-medium leading-[27px] text-[18px] text-neutral-950">{ability[0].ability.name[0].toUpperCase() + ability[0].ability.name.substr(1)}</p>
+                <p className="text-center font-poppins font-medium leading-[27px] text-[15] text-neutral-950">{ability[0].ability.name[0].toUpperCase() + ability[0].ability.name.substr(1)}</p>
               </div>
           </div>
       </div>
+    </section>
+    <section className="flex flex-col w-full items-center mt-[15px]">
+          <BarraPorcentagem genderRate={gender}/>
+    </section>
+    <section className="w-full flex flex-col items-start gap-[5px]">
+          <p className="font-poppins font-semibold text-[18px]">Weaknesses</p>
+          <div className="flex flex-wrap items-start gap-[4px]">
+          {weaknesses.map((pokemonWeaknesses, index) => (
+            
+            <div
+              className={`flex items-center justify-center flex-row ${dynamicBackgroundTypeForWeaknesses(pokemonWeaknesses)} rounded-full gap-[5.8px] w-[114px] h-[36px]`}
+              key={index}
+            > 
+              <div className="w-[20.20px] h-[20.20px] bg-white rounded-full flex justify-center items-center mr-[1px]">
+                <img src={dynamicTypeIconForWeaknesses(pokemonWeaknesses)} alt="" className="w-[15px] h-[15px] rounded-full bg-white"/>
+              </div>            
+              <p className="font-poppins font-medium text-[15px]">
+                {pokemonWeaknesses[0].toUpperCase() + pokemonWeaknesses.substr(1)}
+              </p>
+            </div>
+          ))}
+    </div>
     </section>
   </section>
   </>

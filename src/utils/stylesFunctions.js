@@ -314,6 +314,79 @@ export const dynamicBackgroundType = (types) => {
     return stylesSteel.backgroundSteel
   };
 };
+export const dynamicBackgroundTypeForWeaknesses = (types) => {
+  if (types === "fire") {
+    return stylesFire.backgroundFire
+  };
+
+  if (types === "grass") {
+    return stylesGrass.backgroundGrass
+  };
+
+  if (types === "poison") {
+    return stylesPoison.backgroundPoison
+  };
+
+  if (types === "flying") {
+    return stylesFlying.backgroundFlying
+  };
+
+  if (types === "water") {
+    return stylesWater.backgroundWater
+  };
+
+  if (types === "bug") {
+    return stylesBug.backgroundBug
+  };
+
+  if (types === "normal") {
+    return stylesNormal.backgroundNormal
+  };
+
+  if (types === "electric") {
+    return stylesEletric.backgroundEletric
+  };
+
+  if (types === "ground") {
+    return stylesGround.backgroundGround
+  };
+
+  if (types === "fairy") {
+    return stylesFairy.backgroundFairy
+  };
+
+  if (types === "rock") {
+    return stylesRock.backgroundRock
+  };
+
+  if (types === "psychic") {
+    return stylesPsychic.backgroundPsychic
+  };
+
+  if (types === "fighting") {
+    return stylesFighting.backgroundFighting
+  };
+
+  if (types === "ghost") {
+    return stylesGhost.backgroundGhost
+  };
+
+  if (types === "dark") {
+    return stylesDark.backgroundDark
+  };
+
+  if (types === "dragon") {
+    return stylesDragon.backgroundDragon
+  };
+
+  if (types === "ice") {
+    return stylesIce.backgroundIce
+  };
+
+  if (types === "steel") {
+    return stylesSteel.backgroundSteel
+  };
+};
 
 export const dynamicTypeIcon = (types) => {
   if (types.type.name === "grass") {
@@ -385,6 +458,79 @@ export const dynamicTypeIcon = (types) => {
   };
 
   if (types.type.name === "steel") {
+    return stylesSteel.steelPng
+  };
+}
+export const dynamicTypeIconForWeaknesses = (types) => {
+  if (types === "grass") {
+    return stylesGrass.grassPng
+  };
+
+  if (types === "fire") {
+    return stylesFire.firePng
+  };
+
+  if (types === "water") {
+    return stylesWater.waterPng
+  };
+
+  if (types === "bug") {
+    return stylesBug.bugPng
+  };
+
+  if (types === "flying") {
+    return stylesFlying.flyingPng
+  };
+
+  if (types === "normal") {
+    return stylesNormal.normalPng
+  };
+
+  if (types === "poison") {
+    return stylesPoison.poisonPng
+  };
+
+  if (types === "electric") {
+    return stylesEletric.eletricPng
+  };
+
+  if (types === "ground") {
+    return stylesGround.groundPng
+  };
+
+  if (types === "fairy") {
+    return stylesFairy.fairyPng
+  };
+
+  if (types === "rock") {
+    return stylesRock.rockPng
+  };
+
+  if (types === "psychic") {
+    return stylesPsychic.psychicPng
+  };
+
+  if (types === "fighting") {
+    return stylesFighting.fightingPng
+  };
+
+  if (types === "ghost") {
+    return stylesGhost.ghostPng
+  };
+
+  if (types === "dark") {
+    return stylesDark.darkPng
+  };
+
+  if (types === "dragon") {
+    return stylesDragon.dragonPng
+  };
+
+  if (types === "ice") {
+    return stylesIce.icePng
+  };
+
+  if (types === "steel") {
     return stylesSteel.steelPng
   };
 }
