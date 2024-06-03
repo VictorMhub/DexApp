@@ -2,45 +2,32 @@
 
 import React from 'react';
 
-const BarraPorcentagem = ({ porcentagemMasculino, porcentagemFeminino }) => {
+const BarraPorcentagem = ({ genderRate }) => {
+  if (genderRate === -1) {
+    return <div className="text-gray-500">Este Pokémon não tem gênero.</div>;
+  }
+
+  const porcentagemFeminino = (genderRate / 8) * 100;
+  const porcentagemMasculino = 100 - porcentagemFeminino;
+
   return (
-    <div className="relative pt-1">
-      <div className="flex mb-2 items-center justify-between">
-        <div>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-teal-600 bg-teal-200">
-            Masculino
-          </span>
-        </div>
-        <div className="text-right">
-          <span className="text-xs font-semibold inline-block text-teal-600">
-            {porcentagemMasculino}%
-          </span>
-        </div>
+    <div className="w-[328px]">
+      <div className="flex justify-center items-center mb-2">
+        <span className="text-gray-600 font-poppins text-[15px] font-medium">GENDER</span>
       </div>
-      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-teal-200">
+      <div className="relative h-[8px] w-[328px] rounded-full overflow-hidden bg-gray-200 right-[12px]">
         <div
           style={{ width: `${porcentagemMasculino}%` }}
-          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-500"
+          className="absolute left-0 h-full bg-blue-600"
         ></div>
-      </div>
-
-      <div className="flex mb-2 items-center justify-between">
-        <div>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200">
-            Feminino
-          </span>
-        </div>
-        <div className="text-right">
-          <span className="text-xs font-semibold inline-block text-pink-600">
-            {porcentagemFeminino}%
-          </span>
-        </div>
-      </div>
-      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
         <div
           style={{ width: `${porcentagemFeminino}%` }}
-          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"
+          className="absolute right-0 h-full bg-pink-500"
         ></div>
+      </div>
+      <div className="flex justify-between text-sm mt-1">
+        <span className="text-gray-700">♂ {porcentagemMasculino.toFixed(1)}%</span>
+        <span className="text-gray-700">♀ {porcentagemFeminino.toFixed(1)}%</span>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ const Pokedex = () => {
     setToggleAcc,
     handlePokemonDetail,
     handlePokemonSpecies,
+    handlePokemonWeaknesses,
   } = useContext(GlobalContext)
 
   useEffect(() => {
