@@ -13,7 +13,8 @@ const PokemonDetails = () => {
   const [weaknesses, setPokemonWeaknesses] = useState([]);
   const { types = [], sprites = {}, id, name, weight, height, abilities = [] } = pokemonDetails;
   const { flavor_text_entries = [], egg_groups = [], genera = [], gender_rate } = pokemonSpecie;
-  console.log(types);
+  // console.log(types);
+  console.log(pokemonDetails);
   useEffect(() => {
     const fetchPokemonDetail = async () => {
       const response = await fetch(endpoint);
@@ -36,24 +37,43 @@ const PokemonDetails = () => {
       const ENDPOINT = `https://pokeapi.co/api/v2/type/${typeName}`;
       const response = await fetch(ENDPOINT);
       const data = await response.json();
-      console.log(data.damage_relations);
       return data.damage_relations;
-  
     };
-
+    
     const fetchWeaknesses = async () => {
       if (types.length === 0) return;
 
-      const weaknessesSet = new Set();
-      for (const typeInfo of types) {
-        const damageRelations = await getTypeDamageRelations(typeInfo.type.name);
-        if (damageRelations) {
-          damageRelations.double_damage_from.forEach(weakness => {
-            weaknessesSet.add(weakness.name);
-          });
-        }
-      }
-      setPokemonWeaknesses(Array.from(weaknessesSet));
+      const damageRelationsArray = await Promise.all(
+        types.map((typeInfo) => getTypeDamageRelations(typeInfo.type.name))
+      );
+
+      const weaknessCounts = {};
+
+      damageRelationsArray.forEach((damageRelations) => {
+        damageRelations.double_damage_from.forEach((weakness) => {
+          if (!weaknessCounts[weakness.name]) {
+            weaknessCounts[weakness.name] = 0;
+          }
+          weaknessCounts[weakness.name] += 2;
+        });
+
+        damageRelations.half_damage_from.forEach((resistance) => {
+          if (!weaknessCounts[resistance.name]) {
+            weaknessCounts[resistance.name] = 0;
+          }
+          weaknessCounts[resistance.name] -= 1;
+        });
+
+        damageRelations.no_damage_from.forEach((immunity) => {
+          weaknessCounts[immunity.name] = -Infinity;
+        });
+      });
+
+      const finalWeaknesses = Object.entries(weaknessCounts)
+        .filter(([, count]) => count > 0)
+        .map(([type]) => type);
+
+      setPokemonWeaknesses(finalWeaknesses);
     };
 
     fetchWeaknesses();
@@ -84,5 +104,4 @@ const PokemonDetails = () => {
   );
 };
 
-
-export default PokemonDetails
+export default PokemonDetails;

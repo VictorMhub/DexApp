@@ -17,26 +17,26 @@ const Pokedex = () => {
     setToggleAcc,
     handlePokemonDetail,
     handlePokemonSpecies,
-    handlePokemonWeaknesses,
-  } = useContext(GlobalContext)
+    handlePokemonEvolutionChain,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
-      if(entries.some((entry) => entry.isIntersecting)) {
-        setLimit((prev) => prev + 3)
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setLimit((prev) => prev + 3);
       }
-    })
-    
-    intersectionObserver.observe(document.querySelector(`#${sentinela}`))
-  }, [])
+    });
+
+    intersectionObserver.observe(document.querySelector(`#${sentinela}`));
+  }, []);
 
   useEffect(() => {
-    setToggleDex(true)
-    setToggleAcc(false)
-    setToggleFav(false)
-    setToggleReg(false)
-  }, [])
-  
+    setToggleDex(true);
+    setToggleAcc(false);
+    setToggleFav(false);
+    setToggleReg(false);
+  }, []);
+
   return (
     <section className="flex flex-col h-full overflow-hidden">
       <div className="pb-[25px] w-full h-full">
@@ -93,22 +93,30 @@ const Pokedex = () => {
           <option value="Z-A">Z-A</option>
         </select>
       </div>
-      
+
       <div className="flex flex-col items-center overflow-hidden">
-      {pokemons.lenght === 0 ? <Loading /> : pokemons.map((pokemon) => (
-        <Link to={`/pokemon/${pokemon.id}/${pokemon.name}`} onClick={() => {
-          handlePokemonDetail(pokemon.id)
-          handlePokemonSpecies(pokemon.id)
-          }} key={pokemon.id}>
-        <PokemonCard 
-        number={pokemon.id} 
-        name={pokemon.name[0].toUpperCase() + pokemon.name.substr(1)}
-        types={pokemon.types}
-        image={pokemon.sprites.front_default
-        }
-        />
-        </Link>
-      ))}
+        {pokemons.lenght === 0 ? (
+          <Loading />
+        ) : (
+          pokemons.map((pokemon) => (
+            <Link
+              to={`/pokemon/${pokemon.id}/${pokemon.name}`}
+              onClick={() => {
+                handlePokemonDetail(pokemon.id);
+                handlePokemonSpecies(pokemon.id);
+                handlePokemonEvolutionChain(pokemon.id);
+              }}
+              key={pokemon.id}
+            >
+              <PokemonCard
+                number={pokemon.id}
+                name={pokemon.name[0].toUpperCase() + pokemon.name.substr(1)}
+                types={pokemon.types}
+                image={pokemon.sprites.front_default}
+              />
+            </Link>
+          ))
+        )}
         <div id={sentinela} className="w-[328px] h-[10px]" />
       </div>
     </section>
