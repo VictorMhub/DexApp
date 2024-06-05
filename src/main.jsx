@@ -22,6 +22,7 @@ import Regions from "./pages/Regions";
 import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
 import PokemonDetails from "./pages/PokemonDetails";
+import RegionPokedex from "./pages/RegionPokedex";
 
 
 const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
   {
     path: "/pokedex",
     element: <Pokedex />
+  },
+  {
+    path: "/pokedex/:name",
+    element: <RegionPokedex />
   },
   {
     path: "/regions",

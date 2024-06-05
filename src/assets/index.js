@@ -63,8 +63,38 @@ import habilityIcon from './habilityIcon.svg';
 import heightIcon from './heightIcon.svg';
 import categoryIcon from './categoryIcon.svg';
 import weightIcon from './weightIcon.svg';
-
-
+import kantoBg from "./kanto.png";
+import JohtoBg from "./Johto.png";
+import KalosBg from "./Kalos.png";
+import HoennBg from "./Hoenn.png";
+import SinnohBg from "./Sinnoh.png";
+import UnovaBg from "./Unova.png";
+import GalarBg from "./Galar.png";
+import AlolaBg from "./Alola.png";
+import bulbaPNG from "./bulba.png";
+import charmanderPNG from "./charmander.png";
+import squirtlePNG from "./squirtle.png";
+import chikoritaPNG from "./Chikorita.png";
+import tortodilePNG from "./Tortodile.png";
+import cyndaquilPNG from "./Cyndaquil.png";
+import TorchicPNG from "./Torchic.png";
+import MudkipPNG from "./Mudkip.png";
+import TreeckoPNG from "./Treecko.png";
+import ChimcharPNG from "./Chimchar.png";
+import TurtwigPNG from "./Turtwig.png";
+import PiplupPNG from "./Piplup.png";
+import SnivyPNG from "./Snivy.png";
+import TepigPNG from "./Tepig.png";
+import OshawottPNG from "./Oshawott.png";
+import ChespinPNG from "./Chespin.png";
+import FennekinPNG from "./Fennekin.png";
+import FroakiePNG from "./Froakie.png";
+import RowletPNG from "./Rowlet.png";
+import LittenPNG from "./Litten.png";
+import PopplioPNG from "./Popplio.png";
+import GrookeyPNG from "./Grookey.png";
+import ScorbunnyPNG from "./Scorbunny.png";
+import SobblePNG from "./Sobble.png";
 export  {
     arrow,
     hilbert,
@@ -131,4 +161,36 @@ export  {
     habilityIcon,
     heightIcon,
     weightIcon,
+    kantoBg,
+    bulbaPNG,
+    charmanderPNG,
+    squirtlePNG,
+    JohtoBg,
+    KalosBg,
+    HoennBg,
+    SinnohBg,
+    UnovaBg,
+    GalarBg,
+    AlolaBg,
+    chikoritaPNG,
+    tortodilePNG,
+    cyndaquilPNG,
+    TorchicPNG,
+    MudkipPNG,
+    TreeckoPNG,
+    ChimcharPNG,
+    TurtwigPNG,
+    PiplupPNG,
+    SnivyPNG,
+    TepigPNG,
+    OshawottPNG,
+    ChespinPNG,
+    FennekinPNG,
+    FroakiePNG,
+    RowletPNG,
+    LittenPNG,
+    PopplioPNG,
+    GrookeyPNG,
+    ScorbunnyPNG,
+    SobblePNG,
 };
