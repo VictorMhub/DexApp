@@ -1,4 +1,5 @@
 import BottomNavbar from "../components/BottomNavbar"
+import RegionsCard from "../components/RegionsCard"
 import { GlobalContext } from "../context/globalContext";
 import { useEffect, useContext } from "react";
 
@@ -19,6 +20,7 @@ const Regions = () => {
   return (
     <section>
         <BottomNavbar />
+        <RegionsCard />
     </section>
   )
 }
