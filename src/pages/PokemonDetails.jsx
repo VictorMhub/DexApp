@@ -13,8 +13,7 @@ const PokemonDetails = () => {
   const [weaknesses, setPokemonWeaknesses] = useState([]);
   const { types = [], sprites = {}, id, name, weight, height, abilities = [] } = pokemonDetails;
   const { flavor_text_entries = [], egg_groups = [], genera = [], gender_rate } = pokemonSpecie;
-  // console.log(types);
-  console.log(pokemonDetails);
+  // console.log(endpoint);
   useEffect(() => {
     const fetchPokemonDetail = async () => {
       const response = await fetch(endpoint);

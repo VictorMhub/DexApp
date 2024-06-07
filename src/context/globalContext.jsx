@@ -61,6 +61,10 @@ export const GlobalProvider = ({ children }) => {
     const EVOLUTIONCHAINENDPOINT = `https://pokeapi.co/api/v2/evolution-chain/${id}/`
     localStorage.setItem('evolutionChain', EVOLUTIONCHAINENDPOINT);
   }
+  const handlePokemonsByRegions = async (limit, offset) => {
+    const POKEMONSBYREGIONENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+    localStorage.setItem('pokemonsByRegion', POKEMONSBYREGIONENDPOINT);
+  }
   return (
     <GlobalContext.Provider
       value={{
@@ -86,6 +90,7 @@ export const GlobalProvider = ({ children }) => {
         handlePokemonDetail,
         handlePokemonSpecies,
         handlePokemonEvolutionChain,
+        handlePokemonsByRegions,
       }}
     >
       {children}
