@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { kantoBg, squirtlePNG, bulbaPNG,charmanderPNG, JohtoBg,
   KalosBg,
@@ -29,15 +29,18 @@ import { kantoBg, squirtlePNG, bulbaPNG,charmanderPNG, JohtoBg,
   ScorbunnyPNG,
   SobblePNG,
  } from "../assets/index";
-
+import { GlobalContext } from "../context/globalContext";
 const RegionsCard = () => {
+  const {handlePokemonsByRegions} = useContext(GlobalContext)
   return (
-    <div className="pl-8 pt-8 w-[360px] h-[67px] items-center">
+    <div className="pl-8 pt-8 w-full h-[67px] items-center">
       <h1 className="font-poppins font-semibold text-[18px] leading-[27px]">
         Regions
       </h1>
-      <section className="flex flex-col items-center w-[328px] h-[900px] rounded-[15px] gap-[12px]">
-        <Link to={`/pokedex/kanto`}>
+      <section className="flex flex-col items-center w-full h-[900px] rounded-[15px] gap-[12px]">
+        <Link to={`/pokedex/kanto`}
+        onClick={() => handlePokemonsByRegions(151, 0)}
+        >
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${kantoBg})` }}
@@ -57,7 +60,9 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/johto"}>
+        <Link to={"/pokedex/johto"}
+         onClick={() => handlePokemonsByRegions(100, 151)}
+        >
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${JohtoBg})` }}
@@ -77,7 +82,9 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/hoenn"}>
+        <Link to={"/pokedex/hoenn"}
+        onClick={() => handlePokemonsByRegions(135, 251)}
+        >
        <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${HoennBg})` }}
@@ -97,7 +104,9 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/sinnoh"}>
+        <Link to={"/pokedex/sinnoh"}
+        onClick={() => handlePokemonsByRegions(107, 386)}
+        >
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${SinnohBg})` }}
@@ -117,7 +126,8 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/unova"}>
+        <Link to={"/pokedex/unova"}
+        onClick={() => handlePokemonsByRegions(155, 493)}>
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${UnovaBg})` }}
@@ -137,7 +147,8 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/kalos"}>
+        <Link to={"/pokedex/kalos"}
+        onClick={() => handlePokemonsByRegions(72, 649)}>
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${KalosBg})` }}
@@ -157,7 +168,8 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/alola"}>
+        <Link to={"/pokedex/alola"}
+        onClick={() => handlePokemonsByRegions(88, 721)}>
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${AlolaBg})` }}
@@ -177,7 +189,8 @@ const RegionsCard = () => {
           </div>
         </div>
         </Link>
-        <Link to={"/pokedex/galar"}>
+        <Link to={"/pokedex/galar"}
+        onClick={() => handlePokemonsByRegions(81, 809)}>
         <div
           className="w-[328px] h-[102px] rounded-[15px] bg-white bg-cover bg-center flex flex-row items-center"
           style={{ backgroundImage: `url(${GalarBg})` }}

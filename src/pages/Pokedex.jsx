@@ -19,7 +19,7 @@ const Pokedex = () => {
     handlePokemonSpecies,
     handlePokemonEvolutionChain,
   } = useContext(GlobalContext);
-
+  console.log(pokemons);
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
@@ -35,6 +35,9 @@ const Pokedex = () => {
     setToggleAcc(false);
     setToggleFav(false);
     setToggleReg(false);
+    localStorage.removeItem("endpoint")
+    localStorage.removeItem("species")
+    localStorage.removeItem("evolutionChain")
   }, []);
 
   return (
