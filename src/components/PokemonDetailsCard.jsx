@@ -94,7 +94,7 @@ const PokemonDetailsCard = ({
           ))}
         </div>
         <p className="font-poppins font-normal text-[16px] text-gray-800 mt-[16px] leading-[20.3px]">
-          {description[1].flavor_text}
+          {description[6].flavor_text}
         </p>
         <section className="flex flex-col w-full items-center mt-[15px]">
           <div className="w-full flex flex-row  items-center">
