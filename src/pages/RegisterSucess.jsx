@@ -4,7 +4,7 @@ import { GlobalContext } from "../context/globalContext";
 import { Link } from "react-router-dom";
 
 const RegisterSucess = () => {
-  const { globalUser } = useContext(GlobalContext)
+  const { globalUser, setLogged, setGlobalUser} = useContext(GlobalContext)
   return (
     <section className="flex flex-col sm:py-15 py-5 h-full">
       <div className="flex justify-center items-center xl:px-0 sm:px-16 px-6 pt-[158px]">
@@ -30,7 +30,11 @@ const RegisterSucess = () => {
           jornada.`}
         </h4>
         <Link to="/pokedex"> 
-        <button className="w-[328px] h-[58px] items-center bg-blue-900 text-white text-center rounded-full font-semibold text-[18px] font-poppins mt-[30px]" onClick={() => localStorage.setItem("user", JSON.stringify(globalUser))}>
+        <button className="w-[328px] h-[58px] items-center bg-blue-900 text-white text-center rounded-full font-semibold text-[18px] font-poppins mt-[30px]" onClick={() => {
+          localStorage.setItem("user", JSON.stringify(globalUser))
+          setGlobalUser({...globalUser, status: "logged"});
+          setLogged(true);
+        }}>
           Continuar
         </button>
         </Link>
