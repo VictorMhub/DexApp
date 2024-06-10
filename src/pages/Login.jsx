@@ -1,24 +1,36 @@
 import { semiArrow } from "../assets";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../context/globalContext";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const { loginError, setLoginError } = useContext(GlobalContext);
   const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+/i;
-  const user = JSON.parse(localStorage.getItem("user"))
-  console.log(user.email);
-
+  const navigate = useNavigate(); 
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (!storedUser) {
+      localStorage.setItem("user", JSON.stringify({
+        user: "",
+        email: "",
+        password: "",
+      }));
+    }
+  }, []);
 
   const handleButton = () => {
-    if(email != user.email || password != user.password) {
-        setError(true)
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || email !== user.email || password !== user.password) {
+      setLoginError(true);
     } else {
-        setError(false)
+      navigate('/pokedex');
     }
-  }
+  };
 
   useEffect(() => {
     emailRegex.test(email) && password.length > 0 ? setDisabled(false) : setDisabled(true);
@@ -30,7 +42,7 @@ const Login = () => {
         <Link to="/">
           <img className="w-[38px]" src={semiArrow} alt="semi-arrow" />
         </Link>
-        <div className="w-full justify-center"  onClick={() => handleButton()}>
+        <div className="w-full justify-center">
           <p className="text-center font-poppins font-semibold text-[20px] pr-[29px]">
             Entrar
           </p>
@@ -91,11 +103,10 @@ const Login = () => {
           </p>
         </Link>
         {
-            !error ? <span></span> : <span className="font-poppins font-medium text-[14px] text-red-800 mt-[15px]">Email ou senha inválidos</span>
+            !loginError ? <span></span> : <span className="font-poppins font-medium text-[14px] text-red-800 mt-[15px]">Email ou senha inválidos</span>
         }
       </div>
       <div className="flex flex-col items-center w-full pt-[300px]">
-        <Link to="/pokedex">
         <button
           className={
             disabled
@@ -103,11 +114,10 @@ const Login = () => {
               : "w-[328px] h-[58px] items-center bg-blue-900 text-white text-center rounded-full font-semibold text-[18px] font-poppins"
           }
           disabled={disabled}
-          onClick={() => handleButton()}
+          onClick={handleButton}
         >
           Entrar
         </button>
-        </Link>
       </div>
     </section>
   );
