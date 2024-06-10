@@ -3,8 +3,8 @@ import { GlobalContext } from "../context/globalContext";
 import { useEffect, useContext } from "react";
 import { hilda, hilbert, google } from "../assets";
 import { Link } from "react-router-dom";
-const Profile = () => {
-  const { setToggleDex, setToggleReg, setToggleFav, setToggleAcc } =
+const LoggedProfile = () => {
+  const { setToggleDex, setToggleReg, setToggleFav, setToggleAcc, globalUser } =
     useContext(GlobalContext);
 
   useEffect(() => {
@@ -215,4 +215,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default LoggedProfile;

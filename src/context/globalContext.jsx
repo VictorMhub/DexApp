@@ -7,6 +7,7 @@ export const GlobalProvider = ({ children }) => {
     user: "",
     email: "",
     password: "",
+    status: ""
   });
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemons, setPokemons] = useState([]);
@@ -17,6 +18,15 @@ export const GlobalProvider = ({ children }) => {
   const [toggleFav, setToggleFav] = useState(false);
   const [toggleAcc, setToggleAcc] = useState(false);
   const [endpoint, setEndPoint] = useState('');
+  const [loginError, setLoginError] = useState(false);
+  const [logged, setLogged] = useState(false);
+  console.log(globalUser);
+
+  
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if(user) setLogged(true);
+  })
   useEffect(() => {
     const ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`;
     fetch(ENDPOINT)
@@ -91,6 +101,8 @@ export const GlobalProvider = ({ children }) => {
         handlePokemonSpecies,
         handlePokemonEvolutionChain,
         handlePokemonsByRegions,
+        loginError, 
+        setLoginError,
       }}
     >
       {children}
