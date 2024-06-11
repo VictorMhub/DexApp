@@ -14,11 +14,10 @@ const BottomNavbar = () => {
     setToggleReg,
     toggleAcc,
     setToggleAcc,
-    logged,
+    globalUser
   } = useContext(GlobalContext)
-  const user = JSON.parse(localStorage.getItem("user"));
-  // console.log(user.user);
-  // console.log(logged);
+  const {user, status} = globalUser;
+  console.log(status);
   const handdleClick = (e) => {
       if(e.target.id === 'pokedex'){
         setToggleDex(true)
@@ -68,7 +67,7 @@ const BottomNavbar = () => {
         </Link>
         
         
-        <Link className="flex flex-col items-center justify-center grow overflow-hidden whitespace-nowrap" id="conta" onClick={(e) => handdleClick(e)} to={logged ? `/aaaa/profile` : "/profile"}>
+        <Link className="flex flex-col items-center justify-center grow overflow-hidden whitespace-nowrap" id="conta" onClick={(e) => handdleClick(e)} to={status === "logged" ? `/${user}/profile` : "/profile"}>
           <img src={toggleAcc ? toggledAcc : perfil} alt="" className="w-[25.67px] h-[25.67px]" id="conta"/>
           <span className={`font-poppins font-medium text-[12px] text-blue-800 ${toggleAcc ? '' : 'hidden'}`} id="conta">Conta</span>
         </Link>
