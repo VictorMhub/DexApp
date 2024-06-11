@@ -236,6 +236,27 @@ const LoggedProfile = () => {
           </div>
         </div>
       </div>
+      <div className="w-full flex flex-col items-center mt-8">
+        <div className="flex flex-col items-start w-full">
+          <div className="flex flex-col items-start w-full ml-4">
+            <h1 className="font-poppins font-semibold mt-4 text-lg">
+            Outros
+            </h1>
+          </div>
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+            <Link onClick={() => globalUser.status = ""} to={"/"}>
+              <h3 className="font-poppins font-medium mt-4 text-red-600">
+              Sair
+              </h3>
+              </Link>
+              <p className="font-poppins font-normal text-sm">
+              Você entrou como Junior Saraiva.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
