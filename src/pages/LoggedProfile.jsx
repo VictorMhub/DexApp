@@ -3,6 +3,7 @@ import { GlobalContext } from "../context/globalContext";
 import { useEffect, useContext } from "react";
 import { hilda, hilbert, google } from "../assets";
 import { Link } from "react-router-dom";
+import { semiArrowRight } from "../assets";
 const LoggedProfile = () => {
   const { setToggleDex, setToggleReg, setToggleFav, setToggleAcc, globalUser } =
     useContext(GlobalContext);
@@ -13,53 +14,77 @@ const LoggedProfile = () => {
     setToggleFav(false);
     setToggleReg(false);
   }, []);
+  const hidePassword = (password) => {
+    return '•'.repeat(password.length);
+  };
 
   return (
     <section className="w-full flex flex-col items-center">
       <BottomNavbar />
-      <div className="w-full flex flex-col items-center">
-        <div className="flex flex-col items-center w-full h-[200px] border-2">
-          <div className="flex fle-row w-full ml-[10px]">
-            <div className="flex w-full h-[72px]">
-              <p className="font-normal	font-poppins leading-6 text-[16px]">
-                Mantenha sua Pokédex atualizada e participe desse mundo.
+      <div className="ml-4 w-full flex items-start mt-4">
+        <span className="ml-2 font-semibold text-lg text-[20px]">{globalUser.user}</span>
+      </div>
+      <div className="w-full flex flex-col items-center mt-4">
+        <div className="flex flex-col items-start w-full">
+          <div className="flex flex-col items-start w-full ml-4">
+            <h1 className="font-poppins font-semibold mt-4 text-lg">
+              Informações da conta
+            </h1>
+          </div>
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Nome
+              </h3>
+              <p className="font-poppins font-normal text-sm">
+                {globalUser.user}
               </p>
-              <img
-                src={hilbert}
-                className=" flex justify-self-end w-[90px] h-[87px]"
-                alt=""
-              />
-              <img
-                src={hilda}
-                className="flex justify-self-end  w-[90px] h-[87px]"
-                alt=""
-              />
+            </div>
+            <div className="flex items-center ml-4">
+              <img src={semiArrowRight} alt="Arrow" />
             </div>
           </div>
-          <Link to="/">
-            <div className="flex items-center flex-row border-2 rounded-full border-blue-900 w-[328px] h-[60px] mt-[35px]">
-              <div className="w-full justify-center items-center flex">
-                <p className="text-center font-poppins font-semibold font-[18px] text-blue-900">
-                  Entre ou Cadastre-se
-                </p>
-              </div>
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Email
+              </h3>
+              <p className="font-poppins font-normal text-sm">
+                {globalUser.email}
+              </p>
             </div>
-          </Link>
+            <div className="flex items-center ml-4">
+              <img src={semiArrowRight} alt="Arrow" />
+            </div>
+          </div>
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Senha
+              </h3>
+              <p className="font-poppins font-normal text-sm">
+                {hidePassword(globalUser.password)}
+              </p>
+            </div>
+            <div className="flex items-center ml-4">
+              <img src={semiArrowRight} alt="Arrow" />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center aaaaa">
+      <div className="w-full flex flex-col items-center mt-4">
         <div className="flex flex-col items-start w-full">
-          <div className="flex flex-col items-start w-full ml-[35px]">
-            <h1 className="font-poppins font-semibold	mt-[15px] text-[16px]">
+          <div className="flex flex-col items-start w-full ml-4">
+            <h1 className="font-poppins font-semibold mt-4 text-lg">
               Pokédex
             </h1>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
                 Mega evoluções
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
+              <p className="font-poppins font-normal text-sm">
                 Habilita a exibição de mega evoluções.
               </p>
             </div>
@@ -71,12 +96,12 @@ const LoggedProfile = () => {
               </label>
             </div>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
                 Outras formas
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
+              <p className="font-poppins font-normal text-sm">
                 Habilita a exibição de formas alternativas de pokémon.
               </p>
             </div>
@@ -90,19 +115,19 @@ const LoggedProfile = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center mt-[30px]">
+      <div className="w-full flex flex-col items-center mt-8">
         <div className="flex flex-col items-start w-full">
-          <div className="flex flex-col items-start w-full ml-[35px]">
-            <h1 className="font-poppins font-semibold	mt-[15px] text-[16px]">
+          <div className="flex flex-col items-start w-full ml-4">
+            <h1 className="font-poppins font-semibold mt-4 text-lg">
               Notificações
             </h1>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
                 Atualizações na pokédex
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
+              <p className="font-poppins font-normal text-sm">
                 Novos Pokémons, habilidades, informações, etc.
               </p>
             </div>
@@ -114,12 +139,12 @@ const LoggedProfile = () => {
               </label>
             </div>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
-                Mundo Pokémon{" "}
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Mundo Pokémon
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
+              <p className="font-poppins font-normal text-sm">
                 Acontecimentos e informações do mundo de pokémon.
               </p>
             </div>
@@ -133,79 +158,79 @@ const LoggedProfile = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center mt-[30px]">
+      <div className="w-full flex flex-col items-center mt-8">
         <div className="flex flex-col items-start w-full">
-          <div className="flex flex-col items-start w-full ml-[35px]">
-            <h1 className="font-poppins font-semibold	mt-[15px] text-[16px]">
+          <div className="flex flex-col items-start w-full ml-4">
+            <h1 className="font-poppins font-semibold mt-4 text-lg">
               Idioma
             </h1>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
                 Idioma da interface
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
+              <p className="font-poppins font-normal text-sm">
                 Português (PT-BR)
               </p>
             </div>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
-                Idioma de informações em jogo{" "}
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Idioma de informações em jogo
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
-                English (US){" "}
+              <p className="font-poppins font-normal text-sm">
+                English (US)
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center mt-[30px]">
+      <div className="w-full flex flex-col items-center mt-8">
         <div className="flex flex-col items-start w-full">
-          <div className="flex flex-col items-start w-full ml-[35px]">
-            <h1 className="font-poppins font-semibold	mt-[15px] text-[16px]">
-            Geral
+          <div className="flex flex-col items-start w-full ml-4">
+            <h1 className="font-poppins font-semibold mt-4 text-lg">
+              Geral
             </h1>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
-              Versão 
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Versão
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
-              0.8.12
+              <p className="font-poppins font-normal text-sm">
+                0.8.12
               </p>
             </div>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
-              Termos e condições
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Termos e condições
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
-              Tudo o que você precisa saber.
+              <p className="font-poppins font-normal text-sm">
+                Tudo o que você precisa saber.
               </p>
             </div>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
-              Central de ajuda
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Central de ajuda
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
-              Precisa de ajuda? Fale conosco.
+              <p className="font-poppins font-normal text-sm">
+                Precisa de ajuda? Fale conosco.
               </p>
             </div>
           </div>
-          <div className="flex flex-row w-[328px] justify-between">
-            <div className="flex flex-col items-start w-[197px] ml-[35px]">
-              <h3 className="font-poppins font-medium	mt-[15px] text-[16px]">
-              Sobre
+          <div className="flex flex-row w-80 justify-between mt-2">
+            <div className="flex flex-col items-start w-48 ml-4">
+              <h3 className="font-poppins font-medium mt-4 text-base">
+                Sobre
               </h3>
-              <p className="font-poppins font-normal text-[14px]">
-              Saiba mais sobre o app.
+              <p className="font-poppins font-normal text-sm">
+                Saiba mais sobre o app.
               </p>
             </div>
           </div>
