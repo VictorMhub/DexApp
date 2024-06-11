@@ -8,7 +8,7 @@ const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginError, setLoginError } = useContext(GlobalContext);
+  const { loginError, setLoginError, globalUser } = useContext(GlobalContext);
   const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+/i;
   const navigate = useNavigate(); 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleButton = () => {
     const user = JSON.parse(localStorage.getItem("user"));
-
+    globalUser.status = "logged"
     if (!user || email !== user.email || password !== user.password) {
       setLoginError(true);
     } else {
