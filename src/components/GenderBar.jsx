@@ -15,7 +15,7 @@ const BarraPorcentagem = ({ genderRate }) => {
       <div className="flex justify-center items-center mb-2">
         <span className="text-gray-600 font-poppins text-[15px] font-medium">GENDER</span>
       </div>
-      <div className="relative h-[8px] w-[328px] rounded-full overflow-hidden bg-gray-200 right-[12px]">
+      <div className="relative h-[8px] w-[328px] rounded-full overflow-hidden bg-gray-200 mr-[25px]">
         <div
           style={{ width: `${porcentagemMasculino}%` }}
           className="absolute left-0 h-full bg-blue-600"

@@ -187,7 +187,7 @@ const PokemonDetailsCard = ({
             </div>
           </div>
         </section>
-        <section className="flex flex-col w-full items-center mt-[15px]">
+        <section className="flex w-full items-start mt-[15px] mr-[25px]">
           <BarraPorcentagem genderRate={gender} />
         </section>
         <section className="w-full flex flex-col items-start gap-[5px]">
