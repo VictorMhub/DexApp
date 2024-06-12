@@ -31,8 +31,8 @@ const RegisterSucess = () => {
         </h4>
         <Link to="/pokedex"> 
         <button className="w-[328px] h-[58px] items-center bg-blue-900 text-white text-center rounded-full font-semibold text-[18px] font-poppins mt-[30px]" onClick={() => {
-          localStorage.setItem("user", JSON.stringify(globalUser))
           setGlobalUser({...globalUser, status: "logged"});
+          localStorage.setItem("user", JSON.stringify(globalUser))
           setLogged(true);
         }}>
           Continuar

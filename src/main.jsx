@@ -24,6 +24,7 @@ import Profile from "./pages/Profile";
 import PokemonDetails from "./pages/PokemonDetails";
 import RegionPokedex from "./pages/RegionPokedex";
 import LoggedProfile from "./pages/LoggedProfile";
+import LoggedFavorites from "./pages/LoggerdFavorites";
 
 
 const router = createBrowserRouter([
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/favorites",
     element: <Favorites />
+  },
+  {
+    path: "/:user/favorites",
+    element: <LoggedFavorites/>,
   },
   {
     path: "/profile",

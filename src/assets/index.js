@@ -96,6 +96,9 @@ import GrookeyPNG from "./Grookey.png";
 import ScorbunnyPNG from "./Scorbunny.png";
 import SobblePNG from "./Sobble.png";
 import semiArrowRight from "./semiArrowRight.svg";
+import favRed from "./favRed.svg";
+import Dinossaurguy from "./Dinossaurguy.png";
+import Magikarp from "./Magikarp.png";
 export  {
     arrow,
     hilbert,
@@ -195,4 +198,7 @@ export  {
     ScorbunnyPNG,
     SobblePNG,
     semiArrowRight,
+    favRed,
+    Dinossaurguy,
+    Magikarp,
 };

@@ -33,11 +33,11 @@ import { GlobalContext } from "../context/globalContext";
 const RegionsCard = () => {
   const {handlePokemonsByRegions} = useContext(GlobalContext)
   return (
-    <div className="pl-8 pt-8 w-full h-[67px] items-center">
-      <h1 className="font-poppins font-semibold text-[18px] leading-[27px]">
-        Regions
-      </h1>
-      <section className="flex flex-col items-center w-full h-[900px] rounded-[15px] gap-[12px]">
+    <div className="w-full items-center">
+      <div className="w-full flex items-center h-[67px] border-2">
+        <h1 className="ml-2 font-semibold text-lg text-[18px]"> Regions </h1> 
+      </div>
+      <section className="flex flex-col items-center w-full h-[970px] rounded-[15px] gap-[12px] pb-[70px] pt-[15px]">
         <Link to={`/pokedex/kanto`}
         onClick={() => handlePokemonsByRegions(151, 0)}
         >
