@@ -14,9 +14,13 @@ import {
   heightIcon,
   habilityIcon,
   categoryIcon,
+  toggledFav,
+  favRed,
 } from "../assets";
 import { Link } from "react-router-dom";
 import BarraPorcentagem from "../components/GenderBar";
+import { useContext } from "react";
+import { GlobalContext } from "../context/globalContext";
 
 const PokemonDetailsCard = ({
   img,
@@ -32,6 +36,16 @@ const PokemonDetailsCard = ({
   evolutions,
   number,
 }) => {
+
+  const {
+    toggleFav,
+    setToggleFav,
+  } = useContext(GlobalContext)
+  
+  const handleClick = (e) => {
+    if(e.target.id === 'fav') setToggleFav(true)
+    if(toggleFav) setToggleFav(false)
+  } 
   return (
     <>
       <section
@@ -48,9 +62,11 @@ const PokemonDetailsCard = ({
             />
           </Link>
           <img
-            src={favWhite}
+            src={ toggleFav ? favRed : favWhite}
             alt="Favorite Icon"
             className="w-[26px] h-[26px] flex mr-[20px]"
+            id="fav"
+            onClick={(e) => handleClick(e)}
           />
         </nav>
         <img

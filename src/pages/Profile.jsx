@@ -15,12 +15,11 @@ const Profile = () => {
   }, []);
 
   return (
-    <section className="w-full flex flex-col items-center">
-      <BottomNavbar />
+    <section className="w-full flex flex-col items-center pb-[70px]">
       <div className="w-full flex flex-col items-center">
-        <div className="flex flex-col items-center w-full h-[200px] border-2">
+        <div className="flex flex-col items-center w-full h-[135px] border-2">
           <div className="flex fle-row w-full ml-[10px]">
-            <div className="flex w-full h-[72px]">
+            {/* <div className="flex w-full h-[72px] place-content-between">
               <p className="font-normal	font-poppins leading-6 text-[16px]">
                 Mantenha sua Pokédex atualizada e participe desse mundo.
               </p>
@@ -34,7 +33,7 @@ const Profile = () => {
                 className="flex justify-self-end  w-[90px] h-[87px]"
                 alt=""
               />
-            </div>
+            </div> */}
           </div>
           <Link to="/">
             <div className="flex items-center flex-row border-2 rounded-full border-blue-900 w-[328px] h-[60px] mt-[35px]">
@@ -211,6 +210,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <BottomNavbar />
     </section>
   );
 };

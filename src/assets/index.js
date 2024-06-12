@@ -96,6 +96,7 @@ import GrookeyPNG from "./Grookey.png";
 import ScorbunnyPNG from "./Scorbunny.png";
 import SobblePNG from "./Sobble.png";
 import semiArrowRight from "./semiArrowRight.svg";
+import favRed from "./favRed.svg";
 export  {
     arrow,
     hilbert,
@@ -195,4 +196,5 @@ export  {
     ScorbunnyPNG,
     SobblePNG,
     semiArrowRight,
+    favRed,
 };

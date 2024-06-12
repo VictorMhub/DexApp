@@ -18,9 +18,9 @@ const Regions = () => {
     setToggleReg(true)
   }, [])
   return (
-    <section>
-        <BottomNavbar />
+    <section className="pb-[70px]"> 
         <RegionsCard />
+        <BottomNavbar />
     </section>
   )
 }
