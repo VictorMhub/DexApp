@@ -59,7 +59,9 @@ const RegisterUser = () => {
                 : "w-[328px] h-[58px] items-center bg-blue-900 text-white text-center rounded-full font-semibold text-[18px] font-poppins"
             }
             disabled={disabled}
-            onClick={() => setGlobalUser({...globalUser, user})}
+            onClick={() => {
+              setGlobalUser({...globalUser, status: "logged", user});
+            }}
           >
             Continuar
           </button>

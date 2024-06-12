@@ -21,12 +21,20 @@ export const GlobalProvider = ({ children }) => {
   const [loginError, setLoginError] = useState(false);
   const [logged, setLogged] = useState(false);
   console.log(globalUser);
-
-  
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if(user) setLogged(true);
-  })
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setLogged(true);
+      setGlobalUser(prevGlobalUser => ({
+        ...prevGlobalUser,
+        user: prevGlobalUser.user || user.user,
+        email: prevGlobalUser.email || user.email,
+        password: prevGlobalUser.password || user.password,
+        status: prevGlobalUser.status || user.status
+      }));
+    }
+  }, []);
+
   useEffect(() => {
     const ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`;
     fetch(ENDPOINT)

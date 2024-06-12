@@ -25,7 +25,7 @@ const BottomNavbar = () => {
     globalUser,
   } = useContext(GlobalContext);
   const { user, status } = globalUser;
-  console.log(status);
+  // console.log(status);
   const handdleClick = (e) => {
     if (e.target.id === "pokedex") {
       setToggleDex(true);
@@ -102,7 +102,7 @@ const BottomNavbar = () => {
         className="flex flex-col items-center justify-center grow overflow-hidden whitespace-nowrap"
         id="favoritos"
         onClick={(e) => handdleClick(e)}
-        to="/favorites"
+        to={status === "logged" ? `/${user}/favorites` : "/favorites"}
       >
         <img
           src={toggleFav ? toggledFav : fav}
