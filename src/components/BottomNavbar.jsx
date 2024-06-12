@@ -53,7 +53,7 @@ const BottomNavbar = () => {
   };
 
   return (
-    <nav className="border-2 w-full h-[70px] overflow-x-auto flex fixed bottom-0 z-50 bg-white">
+    <nav className="border-2 w-full h-[72px] overflow-x-auto flex fixed bottom-0 z-50 bg-white">
       <Link
         className="flex flex-col items-center justify-center grow overflow-hidden whitespace-nowrap"
         onClick={(e) => handdleClick(e)}
