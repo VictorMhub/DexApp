@@ -17,9 +17,9 @@ import {
   toggledFav,
   favRed,
 } from "../assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BarraPorcentagem from "../components/GenderBar";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/globalContext";
 
 const PokemonDetailsCard = ({
@@ -35,17 +35,49 @@ const PokemonDetailsCard = ({
   weaknesses,
   evolutions,
   number,
+  pokemonSpecie,
+  pokemonId,
+  pokemonDetails,
 }) => {
-
-  const {
-    toggleFav,
-    setToggleFav,
-  } = useContext(GlobalContext)
-  
+  const { toggleFav, setToggleFav, setFavoritiesPokemon, favoritiesPokemon } =
+    useContext(GlobalContext);
   const handleClick = (e) => {
-    if(e.target.id === 'fav') setToggleFav(true)
-    if(toggleFav) setToggleFav(false)
-  } 
+    setFavoritiesPokemon((prevFavPokemon) => {
+      // Verifica se o Pokémon já está na lista de favoritos
+      const isAlreadyFavorited = prevFavPokemon.some(
+        (pokemon) => pokemon.id === pokemonId
+      );
+
+      if (isAlreadyFavorited) {
+        // Remove o Pokémon da lista de favoritos
+        const newFavPokemon = prevFavPokemon.filter(
+          (pokemon) => pokemon.id !== pokemonId
+        );
+        return newFavPokemon;
+      } else {
+        // Adiciona o Pokémon à lista de favoritos
+        return [...prevFavPokemon, { id: pokemonId, specie: pokemonSpecie, details: pokemonDetails}];
+      }
+    });
+
+    // Atualiza o estado do botão de favorito
+    if (e.target.id === "fav") {
+      setToggleFav((prevToggleFav) => !prevToggleFav);
+    }
+  };
+  useEffect(() => {
+    const isFavorited = favoritiesPokemon.some(
+      (pokemon) => pokemon.id === pokemonId
+    );
+    setToggleFav(isFavorited);
+  }, [favoritiesPokemon, pokemonId]);
+
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <section
@@ -54,15 +86,14 @@ const PokemonDetailsCard = ({
         )} flex flex-col items-center justify-center relative rounded-b-[400px]`}
       >
         <nav className="w-full flex py-6 place-content-between items-center">
-          <Link to="/pokedex">
             <img
               className="w-[26px] h-[26px]"
               src={semiArrowWhite}
               alt="semiArrow"
+              onClick={() => navigate(-1)}
             />
-          </Link>
           <img
-            src={ toggleFav ? favRed : favWhite}
+            src={toggleFav ? favRed : favWhite}
             alt="Favorite Icon"
             className="w-[26px] h-[26px] flex mr-[20px]"
             id="fav"

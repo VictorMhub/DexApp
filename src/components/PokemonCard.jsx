@@ -7,7 +7,7 @@ import {
 } from "../utils/stylesFunctions";
 
 
-const PokemonCard = ({ number, name, types, image }) => {
+const PokemonCard = ({ number, name, types, image, pokemonSpecie }) => {
   return (
     <div
       className={`flex flex-row items-center ${dynamicBackgroundOpacity(

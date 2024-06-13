@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
   const [endpoint, setEndPoint] = useState('');
   const [loginError, setLoginError] = useState(false);
   const [logged, setLogged] = useState(false);
-  console.log(globalUser);
+  const [favoritiesPokemon, setFavoritiesPokemon] = useState([])
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
@@ -111,6 +111,8 @@ export const GlobalProvider = ({ children }) => {
         handlePokemonsByRegions,
         loginError, 
         setLoginError,
+        favoritiesPokemon, 
+        setFavoritiesPokemon,
       }}
     >
       {children}

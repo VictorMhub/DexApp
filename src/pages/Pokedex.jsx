@@ -19,7 +19,6 @@ const Pokedex = () => {
     handlePokemonSpecies,
     handlePokemonEvolutionChain,
   } = useContext(GlobalContext);
-
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
@@ -114,6 +113,7 @@ const Pokedex = () => {
                   name={pokemon.name[0].toUpperCase() + pokemon.name.substr(1)}
                   types={pokemon.types}
                   image={pokemon.sprites.front_default}
+                  pokemonSpecie={pokemon.species.url}
                 />
               </Link>
             ))

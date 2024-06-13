@@ -7,13 +7,12 @@ import Loading from "../components/Loading";
 
 const PokemonDetails = () => {
   const endpoint = localStorage.getItem('endpoint');
-  const species = localStorage.getItem('species');
+  const pokemonSpecies = localStorage.getItem('species');
   const [pokemonDetails, setPokemonDetails] = useState({});
   const [pokemonSpecie, setPokemonSpecie] = useState({});
   const [weaknesses, setPokemonWeaknesses] = useState([]);
-  const { types = [], sprites = {}, id, name, weight, height, abilities = [] } = pokemonDetails;
+  const { types = [], sprites = {}, id, name, weight, height, abilities = [], species } = pokemonDetails;
   const { flavor_text_entries = [], egg_groups = [], genera = [], gender_rate } = pokemonSpecie;
-  // console.log(endpoint);
   useEffect(() => {
     const fetchPokemonDetail = async () => {
       const response = await fetch(endpoint);
@@ -22,14 +21,14 @@ const PokemonDetails = () => {
     };
 
     const fetchPokemonSpecie = async () => {
-      const response = await fetch(species);
+      const response = await fetch(pokemonSpecies);
       const data = await response.json();
       setPokemonSpecie(data);
     };
 
     fetchPokemonDetail();
     fetchPokemonSpecie();
-  }, [endpoint, species]);
+  }, [endpoint, pokemonSpecies]);
 
   useEffect(() => {
     const getTypeDamageRelations = async (typeName) => {
@@ -96,6 +95,9 @@ const PokemonDetails = () => {
             category={genera}
             gender={gender_rate}
             weaknesses={weaknesses} // Passando as fraquezas para o componente de detalhes
+            pokemonSpecie={pokemonSpecie}
+            pokemonId={id}
+            pokemonDetails={pokemonDetails}
           />
         )}
       </div>

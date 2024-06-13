@@ -43,9 +43,8 @@ const RegionPokedex = () => {
 }, [pokemonsData]);
 
   return (
-    <section className="flex flex-col h-full overflow-hidden">
+    <section className="flex flex-col h-full overflow-hidden pb-[72px]">
     <div className="pb-[25px] w-full h-full">
-        <BottomNavbar />
       </div>
       <div className="flex items-center text-gray-400 focus-whitin:text-gray-600">
         <img
@@ -83,6 +82,7 @@ const RegionPokedex = () => {
           ))
         )}
     </div>
+    <BottomNavbar />
     </section>
   )
 }
