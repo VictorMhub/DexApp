@@ -19,9 +19,9 @@ const LoggedProfile = () => {
   };
 
   return (
-    <section className="w-full flex flex-col items-center">
+    <section className="w-full flex flex-col items-center pb-[72px]">
       <BottomNavbar />
-      <div className="ml-4 w-full flex items-start mt-4">
+      <div className="ml-4 w-full flex items-start mt-4 ">
         <span className="ml-2 font-semibold text-lg text-[20px]">{globalUser.user}</span>
       </div>
       <div className="w-full flex flex-col items-center mt-4">
