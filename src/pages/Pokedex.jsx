@@ -19,6 +19,10 @@ const Pokedex = () => {
     handlePokemonSpecies,
     handlePokemonEvolutionChain,
   } = useContext(GlobalContext);
+  const [search, setSearch] = useState('');
+  // const [filteredPokemon, setFilteredPokemons ] = useState([])
+  const filteredPokemons = search.length > 0 ? pokemons.filter(pokemon => pokemon.name.includes(search)) : [];
+  console.log(filteredPokemons);
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
@@ -52,6 +56,8 @@ const Pokedex = () => {
             type="text"
             placeholder="Procurar Pokemon..."
             className="w-full h-[52px] pr-3 pl-10 py-2 font-semibold placeholder-gray-500 text-black rounded-full border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
+            onChange={e => setSearch(e.target.value)}
+            value={search}
           />
         </div>
 
@@ -95,7 +101,7 @@ const Pokedex = () => {
         </div>
 
         <div className="flex flex-col items-center pb-[70px]">
-          {pokemons.length === 0 ? (
+          {/* {pokemons.length === 0 ? (
             <Loading />
           ) : (
             pokemons.map((pokemon) => (
@@ -117,7 +123,49 @@ const Pokedex = () => {
                 />
               </Link>
             ))
-          )}
+          )} */}
+          {
+            search.length > 0 ? (
+              filteredPokemons.map((pokemon) => (
+                <Link
+                to={`/pokemon/${pokemon.id}/${pokemon.name}`}
+                onClick={() => {
+                  handlePokemonDetail(pokemon.id);
+                  handlePokemonSpecies(pokemon.id);
+                  handlePokemonEvolutionChain(pokemon.id);
+                }}
+                key={pokemon.id}
+              >
+                <PokemonCard
+                  number={pokemon.id}
+                  name={pokemon.name[0].toUpperCase() + pokemon.name.substr(1)}
+                  types={pokemon.types}
+                  image={pokemon.sprites.front_default}
+                  pokemonSpecie={pokemon.species.url}
+                />
+              </Link>
+              ))
+            ) : (
+              pokemons.map((pokemon) => (
+                <Link
+                to={`/pokemon/${pokemon.id}/${pokemon.name}`}
+                onClick={() => {
+                  handlePokemonDetail(pokemon.id);
+                  handlePokemonSpecies(pokemon.id);
+                  handlePokemonEvolutionChain(pokemon.id);
+                }}
+                key={pokemon.id}
+              >
+                <PokemonCard
+                  number={pokemon.id}
+                  name={pokemon.name[0].toUpperCase() + pokemon.name.substr(1)}
+                  types={pokemon.types}
+                  image={pokemon.sprites.front_default}
+                  pokemonSpecie={pokemon.species.url}
+                />
+              </Link>
+              ))
+            )}
           <div id={sentinela} className="w-[328px] h-[10px]" />
         </div>
       </div>
